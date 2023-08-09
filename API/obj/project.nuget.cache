@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TGO839fYDJjTQHj3YSM4Bhgz2eAa4bKzsPdc8aCx8LAvB+sQAR1sgjQfKFhL6POYKr59DcRwWBdiCQHxfVK5XQ==",
+  "dgSpecHash": "8zI2nrOBXlRFz3b15f1GEMBNyA1TKZtLtKBMJUFDQLLYsoXfbL43ZCrxLv0WXpuivwNhs7C1keSZvlIkYb8NNQ==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Solc\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Solc\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.9\\microsoft.aspnetcore.openapi.7.0.9.nupkg.sha512",

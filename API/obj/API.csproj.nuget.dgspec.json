@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\API\\API.csproj": {}
+    "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\API.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\API\\API.csproj": {
+    "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\API.csproj",
         "projectName": "API",
-        "projectPath": "c:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\API\\API.csproj",
+        "projectPath": "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\API.csproj",
         "packagesPath": "C:\\Users\\Solc\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\API\\obj\\",
+        "outputPath": "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Solc\\AppData\\Roaming\\NuGet\\NuGet.Config"
