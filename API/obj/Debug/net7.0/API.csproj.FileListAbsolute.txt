@@ -100,3 +100,12 @@ C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\obj\Debug\
 C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\obj\Debug\net7.0\API.pdb
 C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\obj\Debug\net7.0\API.genruntimeconfig.cache
 C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\obj\Debug\net7.0\ref\API.dll
+C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.Certificate.dll
+C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Solc\OneDrive - Óbudai egyetem\code\Fullstack\DatingApp\api\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
