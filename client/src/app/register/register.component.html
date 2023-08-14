@@ -1,0 +1,24 @@
+<form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="end" >
+    <h2>Sign up</h2>
+    <hr>
+    <div>
+        <input type="text" 
+        class="form-control"
+        name="username"
+        [(ngModel)]="model.username"
+        placeholder="Username">
+    </div>
+
+    <div> 
+        <input type="password" 
+        class="form-control"
+        name="password"
+        [(ngModel)]="model.password"
+        placeholder="Password">
+    </div>
+
+    <div>
+        <button class="btn btn-success" type="submit">Register</button>
+        <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+    </div>
+</form>

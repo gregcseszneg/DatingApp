@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+$nav-text-color: #edf0f1;
+$text-color: #360d35;
+$secondary-color: #B4D2D9;
+$secondary-color-darker: #69acbb;
+$background-color: #F2F2F2;
+$secondary-text-color: rgba(198, 30, 107,1);
+$font-family: "Montserrat", sans-serif; 
+
+@mixin transition-ease{
+    transition: all 0.5s ease 0s;
+}
+
+body {
+    background-color: $background-color;
+    margin: 0;
+}

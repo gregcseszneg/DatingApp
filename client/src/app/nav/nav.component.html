@@ -1,0 +1,31 @@
+<div class="nav__bar">
+    <img class="nav__logo" src="assets/heart.png"/>
+    <nav>
+        <ul class="nav__links" *ngIf="accountService.currentUser$| async">
+            <li><a href="#">Matches</a></li>
+            <li><a href="#">Lists</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Edit Profile</a></li>
+        </ul>
+    </nav>
+
+    
+
+    <form #loginForm="ngForm" class="login-form" (ngSubmit)="login()" autocomplete="off" *ngIf="!(accountService.currentUser$| async)">
+        <input 
+        name="username"
+        [(ngModel)]="model.username"
+        type="text" 
+        placeholder="Username">
+
+        <input
+        name="password"
+        [(ngModel)]="model.password"
+        type="password" 
+        placeholder="Password">
+
+        <button class="login__submit-button" type="submit">Login</button>
+    </form>
+    <button class="logout-button" *ngIf="accountService.currentUser$| async" (click)="logout()">Log out</button>
+</div>
+

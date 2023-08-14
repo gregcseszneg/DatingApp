@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import '../../styles';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: $secondary-color;
+}
+
+li, a, button {
+    font-family: $font-family;
+    font-weight: 500;
+    font-size: 16px;
+    color: $nav-text-color;
+    text-decoration: none;
+}
+
+div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: .5% 1%;
+}
+
+.nav__logo {
+    cursor: pointer;
+    height: 52px;
+    width: auto;
+}
+.nav__links {
+    list-style: none;
+    .nav__bar{
+        padding: 0;
+    }
+    li {
+        display: inline-block;
+        padding: 8px 20px;
+        a{
+            border: none;
+            border-radius: 2em;
+            padding: .6em 2em;
+            @include transition-ease;
+            &:hover {
+            background-color: $secondary-color-darker;
+            }
+        } 
+    }
+}
+
+
+button {
+    margin: 0 0 0 .5rem;
+    background-color: $secondary-text-color;
+    height: 2rem;
+    width: 5rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    @include transition-ease;
+    &:hover {
+        background-color: rgb(164, 32, 56);
+    }
+}
+
+.login-form {
+    input {
+        margin: 0 .5rem;
+        padding: .5rem;
+        background-color: $background-color;
+        height: 2rem;
+        width: 10rem;
+        border: 0;
+        border-radius: 1rem;
+        color:$text-color;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
