@@ -8,6 +8,8 @@
     background-color: $secondary-color;
 }
 
+
+
 li, a, button {
     font-family: $font-family;
     font-weight: 500;
@@ -16,34 +18,80 @@ li, a, button {
     text-decoration: none;
 }
 
-div {
+nav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    padding: .5% 1%;
+    justify-content: center;
+    text-align: center;
 }
+
+.nav__bar {
+    display: flex;
+    align-items: center;
+    padding: .5% 1%;
+
+    div {
+        display: flex;
+        align-items: stretch;
+    }
+
+    .burger {
+            visibility: hidden;
+    }
+    .nav__box-left{
+        flex: 1;
+        margin-left: 0; 
+        margin-right: auto;
+        align-items: center;
+        
+    }
+    .nav__box-center{
+        flex: 2;
+        justify-content: center;
+        
+    }
+    .nav__box-right{
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+
+
 
 .nav__logo {
     cursor: pointer;
     height: 52px;
-    width: auto;
+    @include breakpoint(xsmall, max) {
+        height: 32px;
+    }
+    width: auto; 
+}
+
+.navbar__brand {
+    margin: 0 0.6rem 0 0.6rem;
+    font-weight: 700;
+    font-size: 24px;
+    @include breakpoint(xsmall, max) {
+        font-size: 18px;
+    }
 }
 .nav__links {
-    list-style: none;
-    .nav__bar{
-        padding: 0;
+
+    .link__container  {
+        flex-wrap: wrap;
+        justify-content: center;
     }
+
+    text-align: center;
+
     li {
         display: inline-block;
-        padding: 8px 20px;
+        padding: 0.4rem 0.4rem;
         a{
+            padding: .2rem 1rem;
             border: none;
-            border-radius: 2em;
-            padding: .6em 2em;
-            @include transition-ease;
+            border-radius: 2rem;
             &:hover {
-            background-color: $secondary-color-darker;
+                background-color: $secondary-color-darker;
             }
         } 
     }
@@ -51,16 +99,13 @@ div {
 
 
 button {
-    margin: 0 0 0 .5rem;
-    background-color: $secondary-text-color;
+    margin: 0 0 0 0.5;
+    background-color: $button-color;
     height: 2rem;
     width: 5rem;
-    border: none;
-    border-radius: 1rem;
-    cursor: pointer;
-    @include transition-ease;
+    @include rounded-button;
     &:hover {
-        background-color: rgb(164, 32, 56);
+        background-color: $button-color-darker;
     }
 }
 
@@ -78,6 +123,52 @@ button {
         &:focus {
             outline: none;
         }
+    }
+ }
+}
+@include breakpoint(small, max) {
+    nav {
+        display: none;
+    }
+
+    .logout-button {
+        display: none;        
+    }
+
+    .mobile__menu {
+        flex-direction: column;
+        cursor: pointer;
+        padding: .3rem;
+        border-radius: .7rem;
+        @include transition-ease;
+        &:hover {
+            background-color: $secondary-color-darker;
+        }
+    }
+
+    .bar1, .bar2, .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: $button-color;
+        margin: 3.5px 0;
+        @include transition-ease;
+
+        &:hover {
+            background-color: $button-color-darker;
+        }
+    }
+
+    .change .bar1 {
+        transform: translate(0, 11px)
+        rotate(-45deg);
+    }
+    .change .bar2 {
+        opacity: 0;
+    }
+
+    .change .bar3 {
+        transform: translate(0, -11px)
+        rotate(45deg);
     }
 }
 

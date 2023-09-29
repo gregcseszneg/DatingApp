@@ -1,31 +1,46 @@
 <div class="nav__bar">
-    <img class="nav__logo" src="assets/heart.png"/>
-    <nav>
-        <ul class="nav__links" *ngIf="accountService.currentUser$| async">
-            <li><a href="#">Matches</a></li>
-            <li><a href="#">Lists</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="#">Edit Profile</a></li>
-        </ul>
-    </nav>
-
+    <div class="nav__box-left">
+        <img routerLink="/" class="nav__logo" src="assets/heart.png"/>
+        <a routerLink="/" class="navbar__brand">Dating App</a>
+    </div>
+    <div class="nav__box-center">
+        <nav>
+            <ul class="nav__links">
+                <ng-container  *ngIf="accountService.currentUser$| async">
+                    <div class="link__container">
+                        <li><a class="nav-link" routerLink="/members" routerLinkActive="active">Matches</a></li>
+                        <li><a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a></li>
+                        <li><a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a></li>
+                        <li><a class="nav-link" routerLink="#" routerLinkActive="active">Edit Profile</a></li>
+                        <li><a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a></li>
+                </div>
+                </ng-container>
+            </ul>
+        </nav>
+    </div>
     
+    <div class="nav__box-right">
+        <form #loginForm="ngForm" class="login-form" (ngSubmit)="login()" autocomplete="off" *ngIf="!(accountService.currentUser$| async)">
+            <input 
+            name="UserName"
+            [(ngModel)]="model.UserName"
+            type="text" 
+            placeholder="UserName">
 
-    <form #loginForm="ngForm" class="login-form" (ngSubmit)="login()" autocomplete="off" *ngIf="!(accountService.currentUser$| async)">
-        <input 
-        name="username"
-        [(ngModel)]="model.username"
-        type="text" 
-        placeholder="Username">
+            <input
+            name="password"
+            [(ngModel)]="model.password"
+            type="password" 
+            placeholder="Password">
 
-        <input
-        name="password"
-        [(ngModel)]="model.password"
-        type="password" 
-        placeholder="Password">
-
-        <button class="login__submit-button" type="submit">Login</button>
-    </form>
-    <button class="logout-button" *ngIf="accountService.currentUser$| async" (click)="logout()">Log out</button>
+            <button class="login__submit-button" type="submit">Login</button>
+        </form>
+        <div class="mobile__menu" (click)="openMobileMenu($event)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <button class="logout-button" *ngIf="accountService.currentUser$| async" (click)="logout()">Log out</button>
+    </div>
 </div>
 

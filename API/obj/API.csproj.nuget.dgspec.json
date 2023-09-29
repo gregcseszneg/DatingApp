@@ -1,26 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\API.csproj": {}
+    "/home/solc/code/DatingApp/API/API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\API.csproj": {
+    "/home/solc/code/DatingApp/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\API.csproj",
+        "projectUniqueName": "/home/solc/code/DatingApp/API/API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\API.csproj",
-        "packagesPath": "C:\\Users\\Solc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Solc\\OneDrive - Óbudai egyetem\\code\\Fullstack\\DatingApp\\api\\obj\\",
+        "projectPath": "/home/solc/code/DatingApp/API/API.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/home/solc/code/DatingApp/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Solc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,6 +38,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.Certificate": {
               "target": "Package",
               "version": "[7.0.10, )"
@@ -89,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.401/RuntimeIdentifierGraph.json"
         }
       }
     }

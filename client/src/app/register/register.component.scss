@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import '../../styles';
+
+* {
+    color: $text-color;
+    font-family: $font-family;
+}
+
+
+.wrapper {
+    @include home-wrapper;
+}
+
+.container {
+    @include container-centered ;
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 1rem 3rem 3rem 3rem #d6d3d3;
+}
+
+hr {
+    width: 75%; 
+    margin-top: 0; 
+}
+
+.headline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.register__form {
+    
+    text-align: center;
+
+    button {
+        color: $nav-text-color;
+        background-color: $button-color;
+        margin: 0.5rem 1rem 1rem 1rem;
+        padding: 0.25rem 1rem;
+        @include rounded-button;
+        &:hover {
+            background-color: $button-color-darker;
+        }
+    }
+
+    input {
+        width: 13rem;
+        border: 0;
+        border-radius: 1rem;
+        padding: 0.5rem;
+        margin: 0.5rem 0;
+        &:focus {
+            outline: none;
+        }
+        
+    }
+}

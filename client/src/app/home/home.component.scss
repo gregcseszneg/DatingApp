@@ -1,0 +1,48 @@
+@import '../../styles';
+
+* {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    color: $text-color;
+}
+
+.container {
+    @include home-wrapper;
+    margin:auto;
+}
+
+.items__container{
+    @include container-centered;
+    width: 70vw;
+
+    .button__container {
+        margin: 3rem;
+        display: flex;
+        justify-content: center;
+
+        button {
+            color: $nav-text-color;
+            padding: 0.3rem 1rem;
+            background-color: $button-color;
+            @include rounded-button;
+            margin: 0 1.5rem 0 1.5rem;
+            font-size: 1.5rem;
+            &:hover {
+                background-color: $button-color-darker;
+            }
+        }
+    }
+}
+
+
+h1 {
+    font-weight: 1000;
+    font-size: 4rem;
+    font-style: italic;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    font-size: 1.5rem;
+}

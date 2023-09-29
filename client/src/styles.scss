@@ -1,17 +1,113 @@
 /* You can add global styles to this file, and also import other style files */
-$nav-text-color: #edf0f1;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+//variables
+$nav-text-color: #f4f8f9;
 $text-color: #360d35;
 $secondary-color: #B4D2D9;
 $secondary-color-darker: #69acbb;
 $background-color: #F2F2F2;
-$secondary-text-color: rgba(198, 30, 107,1);
-$font-family: "Montserrat", sans-serif; 
+$button-color: rgba(198, 30, 107,1);
+$button-color-darker: rgb(164, 32, 56);
+$font-family: "Montserrat", sans-serif;
+$font-weight: 500;
+
+
 
 @mixin transition-ease{
-    transition: all 0.5s ease 0s;
+    transition: all 0.5s ease;
+}
+
+@mixin home-wrapper {
+    width: 100vw;
+    height: 93vh;
+    display: flex;
+    justify-content: center;
+}
+
+@mixin container-centered {
+    width: 450px;
+    justify-content: center;
+    margin: 27vh auto auto auto;
+}
+
+@mixin rounded-button {
+    border: none;
+    border-radius: 2rem;
+    @include transition-ease;
+    cursor: pointer;
+}
+
+ html {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    color: $text-color
+}
+
+$breakpoints: (
+    xsmall: (
+        min: 768px,
+        max: 767.98px
+    ),
+    small: (
+        min: 980px,
+        max: 979.98px
+    ),
+    desktop: (
+        min: 1440px,
+        max: 1439.98px
+    ),
+    /*xl: (
+        min: 1200px,
+        max: 1199.98px
+    ),
+    xxl: (
+      min: 1400px,
+      max: 1399.98px,
+    )*/
+);
+
+@mixin breakpoint($breakpoint, $direction: min) {
+    
+    //check if the supplied breakpoint exists in our breakpoits map
+    @if map-has-key($breakpoints, $breakpoint) { 
+        $breakpoint-values: map-get($breakpoints, $breakpoint);
+        $breakpoint-min: map-get($breakpoint-values, min);
+        $breakpoint-max: map-get($breakpoint-values, max);
+
+        //check if we are writing styles for larger or smaller screens
+        @if $direction == min {
+            @media (min-width: $breakpoint-min) {
+                @content;
+            }
+        }
+
+        @else {
+            @media (max-width: $breakpoint-max) {
+                @content;
+            }
+        }
+    
+    // use the custom value if the breakpoint is not part of the pre-defined list
+    } @else {
+        
+        @if $direction == min {
+            @media (min-width: $breakpoint) {
+                @content;
+            }
+        }
+
+        @else {
+            @media (max-width: $breakpoint) {
+                @content;
+            }
+        }
+    }
 }
 
 body {
     background-color: $background-color;
     margin: 0;
 }
+
+
