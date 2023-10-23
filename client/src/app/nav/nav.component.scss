@@ -18,6 +18,10 @@ li, a, button {
     text-decoration: none;
 }
 
+.active {
+    background-color: $secondary-color-darker;
+}
+
 nav {
     display: flex;
     justify-content: center;
@@ -28,6 +32,8 @@ nav {
     display: flex;
     align-items: center;
     padding: .5% 1%;
+    min-height: 50px;
+    width: 100vw;
 
     div {
         display: flex;
@@ -38,19 +44,21 @@ nav {
             visibility: hidden;
     }
     .nav__box-left{
-        flex: 1;
         margin-left: 0; 
         margin-right: auto;
         align-items: center;
         
     }
     .nav__box-center{
-        flex: 2;
+        width:max-content;
         justify-content: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
         
     }
     .nav__box-right{
-        flex: 1;
         justify-content: flex-end;
     }
 
@@ -60,10 +68,10 @@ nav {
 .nav__logo {
     cursor: pointer;
     height: 52px;
-    @include breakpoint(xsmall, max) {
-        height: 32px;
-    }
     width: auto; 
+    @include breakpoint(xxsmall, max) {
+        height: 32px;    
+    }
 }
 
 .navbar__brand {
@@ -107,11 +115,20 @@ button {
     &:hover {
         background-color: $button-color-darker;
     }
+    @include breakpoint(xsmall, max) {
+        font-size: 14px;
+        width: 4rem;
+        height: 1.7rem;
+    }
+    @include breakpoint(xxsmall, max) {
+        height: 1.5rem;
+        width: 3.5rem;    
+    }
 }
 
 .login-form {
     input {
-        margin: 0 .5rem;
+        margin: 0 .25rem;
         padding: .5rem;
         background-color: $background-color;
         height: 2rem;
@@ -123,8 +140,21 @@ button {
         &:focus {
             outline: none;
         }
+        @include breakpoint(xsmall, max) {
+            height: 1.7rem;
+            width: 8rem;
+        }
+        @include breakpoint(xxsmall, max) {
+            height: 1.5rem;
+            width: 6rem;    
+        }
     }
  }
+}
+@include breakpoint(medium, max) {
+    .navbar__brand {
+        display: none;
+    }
 }
 @include breakpoint(small, max) {
     nav {

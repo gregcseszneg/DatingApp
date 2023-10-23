@@ -1,11 +1,15 @@
 <div class="container">
     <div class="items__container" *ngIf="!registerMode">
+        <div>
             <h1>Find your match</h1>
-            <p>Come on in to view your matches... all you need to do is sign up!</p>   
-            <div class="button__container">
-                <button class="register__button" (click)="registerToggle()">Register</button>
-                <button >Learn more</button>
-            </div>
+        </div>            
+        <div>
+            <p>Come on in to view your matches... all you need to do is sign up!</p>  
+        </div>
+        <div class="button__container">
+            <button class="register__button" (click)="registerToggle()">Register</button>
+            <button >Learn more</button>
+        </div>
     </div>
 
     <div class="container__register" *ngIf="registerMode">

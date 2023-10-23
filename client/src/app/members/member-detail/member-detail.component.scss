@@ -1,0 +1,41 @@
+
+@import '../../../styles';
+.row {
+    display: flex;
+    height: max-content;
+}
+
+.card {
+    @include rounded-button;
+    justify-content: center;
+    flex: 2;
+    padding: 1rem;
+    box-shadow: .3rem .3rem .3rem .3rem hsl(0, 4%, 91%);
+
+    .card-footer {
+        display: flex;
+        justify-content: center;
+        button {
+            @include rounded-button;
+            margin: 0.75rem;
+            background-color: $button-color;
+            color: $nav-text-color;
+            i {
+                @include rounded-button;
+                border-radius: 100rem;
+                padding: 0.4rem;
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+.client-pages {
+    justify-content: center;
+    margin-left: 1rem;
+    flex: 3;
+}
+
+.pictures {
+    width: 50vw;
+}

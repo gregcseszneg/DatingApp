@@ -3,7 +3,7 @@
         <img routerLink="/" class="nav__logo" src="assets/heart.png"/>
         <a routerLink="/" class="navbar__brand">Dating App</a>
     </div>
-    <div class="nav__box-center">
+    <div class="nav__box-center" *ngIf="(accountService.currentUser$| async)">
         <nav>
             <ul class="nav__links">
                 <ng-container  *ngIf="accountService.currentUser$| async">
@@ -35,7 +35,7 @@
 
             <button class="login__submit-button" type="submit">Login</button>
         </form>
-        <div class="mobile__menu" (click)="openMobileMenu($event)">
+        <div class="mobile__menu" (click)="openMobileMenu($event)" *ngIf="(accountService.currentUser$| async)">
             <div class="bar1"></div>
             <div class="bar2"></div>
             <div class="bar3"></div>

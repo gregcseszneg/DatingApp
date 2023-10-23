@@ -9,6 +9,10 @@
 
 .wrapper {
     @include home-wrapper;
+    position: relative;
+    width: 720px;
+    min-width: 320px;
+    margin:auto;
 }
 
 .container {
@@ -31,8 +35,10 @@ hr {
 }
 
 .register__form {
-    
+    @include container-centered;
     text-align: center;
+    width: 30vw;
+    height: 25vh;
 
     button {
         color: $nav-text-color;

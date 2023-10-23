@@ -13,11 +13,16 @@
 
 .items__container{
     @include container-centered;
-    width: 70vw;
-
+    flex-wrap: wrap;
+    justify-content:space-between;
+    div
+    {
+        white-space: normal;
+    }
     .button__container {
-        margin: 3rem;
+        margin: 2rem;
         display: flex;
+        
         justify-content: center;
 
         button {
@@ -30,19 +35,30 @@
             &:hover {
                 background-color: $button-color-darker;
             }
+            @include breakpoint(xxsmall, max) {
+                padding: 0.3rem;
+                margin: 0 .9rem 0  .9rem;
+                font-size: 1.1rem;
+            }
+                
         }
     }
 }
 
-
 h1 {
-    font-weight: 1000;
+    font-weight: 800;
     font-size: 4rem;
+    line-height: 4rem;
     font-style: italic;
     text-align: center;
+    margin-bottom: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 
 p {
     text-align: center;
     font-size: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }

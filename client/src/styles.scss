@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 //variables
 $nav-text-color: #f4f8f9;
@@ -11,6 +12,7 @@ $button-color: rgba(198, 30, 107,1);
 $button-color-darker: rgb(164, 32, 56);
 $font-family: "Montserrat", sans-serif;
 $font-weight: 500;
+$min-width: 320px;
 
 
 
@@ -19,16 +21,19 @@ $font-weight: 500;
 }
 
 @mixin home-wrapper {
-    width: 100vw;
-    height: 93vh;
     display: flex;
     justify-content: center;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-40%);
 }
 
 @mixin container-centered {
-    width: 450px;
     justify-content: center;
-    margin: 27vh auto auto auto;
+    min-width: $min-width;
+    margin-left: 2rem;
+    margin: auto auto auto auto;
 }
 
 @mixin rounded-button {
@@ -45,6 +50,10 @@ $font-weight: 500;
 }
 
 $breakpoints: (
+    xxsmall: (
+        min: 470px,
+        max: 468.98px
+    ),
     xsmall: (
         min: 768px,
         max: 767.98px
@@ -53,9 +62,13 @@ $breakpoints: (
         min: 980px,
         max: 979.98px
     ),
+    medium: (
+        min: 1050px,
+        max: 1048.98px
+    ),
     desktop: (
-        min: 1440px,
-        max: 1439.98px
+        min: 1920px,
+        max: 1919.98px
     ),
     /*xl: (
         min: 1200px,
@@ -111,3 +124,6 @@ body {
 }
 
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,8 @@
+*.dll
+*.so
+*.exe
+*.cache
+*.bin
+API/bin/*
+.vs/DatingApp/DesignTimeBuild/.dtbcache.v2
+.vs/DatingApp/v17/.futdcache.v2

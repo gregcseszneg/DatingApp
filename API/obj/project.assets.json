@@ -2514,7 +2514,7 @@
     ]
   },
   "packageFolders": {
-    "/root/.nuget/packages/": {}
+    "/home/solc/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
@@ -2522,11 +2522,11 @@
       "projectUniqueName": "/home/solc/code/DatingApp/API/API.csproj",
       "projectName": "API",
       "projectPath": "/home/solc/code/DatingApp/API/API.csproj",
-      "packagesPath": "/root/.nuget/packages/",
+      "packagesPath": "/home/solc/.nuget/packages/",
       "outputPath": "/home/solc/code/DatingApp/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/root/.nuget/NuGet/NuGet.Config"
+        "/home/solc/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
