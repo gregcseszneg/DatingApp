@@ -17,24 +17,12 @@ import { MatTabChangeEvent, MatTabGroup, MatTabsModule } from '@angular/material
 export class MemberDetailComponent implements OnInit{
   member: Member | undefined;
   images: GalleryItem[]=[];
-  selectedTab: String | undefined="asd";
   
   constructor(private memberService: MembersService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadMember();
   }
-
-  checkSelectedTab(event: Event)
-  {
-    const tag = event.target as HTMLElement;
-     if(tag.getAttribute('Label')?.toString()!=undefined)
-     {
-      this.selectedTab = tag.getAttribute('Label')?.toString();
-     }
-     console.log(this.selectedTab);
-  }
-
 
   loadMember() {
     var username= this.route.snapshot.paramMap.get('username');

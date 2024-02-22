@@ -1,41 +1,19 @@
-
-@import '../../../styles';
-.row {
-    display: flex;
-    height: max-content;
+.img-thumbnail{
+    margin: 25px;
+    width: 85%;
+    height: 85%;
 }
 
-.card {
-    @include rounded-button;
-    justify-content: center;
-    flex: 2;
-    padding: 1rem;
-    box-shadow: .3rem .3rem .3rem .3rem hsl(0, 4%, 91%);
-
-    .card-footer {
-        display: flex;
-        justify-content: center;
-        button {
-            @include rounded-button;
-            margin: 0.75rem;
-            background-color: $button-color;
-            color: $nav-text-color;
-            i {
-                @include rounded-button;
-                border-radius: 100rem;
-                padding: 0.4rem;
-                font-size: 1.5rem;
-            }
-        }
-    }
+.card-body{
+    padding: 0 25px;
 }
 
-.client-pages {
-    justify-content: center;
-    margin-left: 1rem;
-    flex: 3;
+.card-footer {
+    padding: 10px 15px;
+    background-color: #ffff;
+    background-color: none;
 }
 
-.pictures {
-    width: 50vw;
+.gallery {
+    height: 600px;
 }

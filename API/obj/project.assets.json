@@ -2514,24 +2514,32 @@
     ]
   },
   "packageFolders": {
-    "/home/solc/.nuget/packages/": {}
+    "C:\\Users\\Solc\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/solc/code/DatingApp/API/API.csproj",
+      "projectUniqueName": "C:\\code\\Fullstack\\DatingApp\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "/home/solc/code/DatingApp/API/API.csproj",
-      "packagesPath": "/home/solc/.nuget/packages/",
-      "outputPath": "/home/solc/code/DatingApp/API/obj/",
+      "projectPath": "C:\\code\\Fullstack\\DatingApp\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\Solc\\.nuget\\packages\\",
+      "outputPath": "C:\\code\\Fullstack\\DatingApp\\API\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/solc/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Solc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2604,7 +2612,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.401/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

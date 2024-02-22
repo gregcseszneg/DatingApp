@@ -1,38 +1,55 @@
 <div class="row" *ngIf="member">
-    <div>
+    <div class="col-4">
         <div class="card">
-            <img src="{{member.photoUrl || './assets/user.png'}}" alt="">
+         <!--col-4: takes up 1/3 of the page since there is 12 column in Bootstrap grid system -->
+            <img class="card-img-top img-thumbnail" src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}">
             <div class="card-body">
                 <div>
                     <h1>{{member.knownAs}}</h1>
+                    <div>
+                        <strong>Location:</strong>
+                        <p>{{member.city}}, {{member.country}}</p>
+                    </div>
+                    <div>
+                        <strong>Age:</strong>
+                        <p>{{member.age}}</p>
+                    </div>
+                    <div>
+                        <strong>Last active:</strong>
+                        <p>{{member.lastActive | date: 'yyyy-MM-dd' }}</p>
+                    </div>
+                    <div>
+                        <strong>Member since:</strong>
+                        <p>{{member.created | date: 'yyyy-MM-dd' }}</p>
+                    </div>
                 </div>
-                <div>
-                    <strong>Location:</strong>
-                    <p>{{member.city}}, {{member.country}}</p>
-                </div>
-                <div>
-                    <strong>Age:</strong>
-                    <p>{{member.age}}</p>
-                </div>
-                <div>
-                    <strong>Last active:</strong>
-                    <p>{{member.lastActive | date: 'yyyy-MM-dd' }}</p>
-                </div>
-                <div>
-                    <strong>Member since:</strong>
-                    <p>{{member.created | date: 'yyyy-MM-dd' }}</p>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div>
-                    <button><i class="fa fa-heart"></i></button>
-                    <button><i class="fa fa-envelope"></i></button>
+                <div class="card-footer">
+                    <div class="btn-group d-flex">
+                        <button class="btn"><i class="fa fa-heart"></i></button>
+                        <button class="btn"><i class="fa fa-envelope"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="client-pages">
-        <gallery class="pictures" thumbPosition="left" [items]="images"></gallery>
-    </div>
+        <div class="col-8">
+            <mat-tab-group class="member-tab">
+                <mat-tab label="About {{member.knownAs}}">
+                        <h4>Description</h4>
+                        <p>{{member.interests}}</p>
+                        <h4>Looking for</h4>
+                        <p>{{member.lookingFor}}</p>
+                </mat-tab>
+                <mat-tab label="Interests">
+                    <h4>Interests</h4>
+                    <p>{{member.interests}}</p>
+                </mat-tab>
+                <mat-tab label="Photos" #photoTab>
+                    <gallery *ngIf="photoTab.isActive" [items]="images" class="gallery"></gallery>
+                </mat-tab>
+                <mat-tab label="Messagess">
+                    <p>Messages will go here!</p>
+                </mat-tab>
+            </mat-tab-group>  
+        </div>
 </div>

@@ -24,7 +24,6 @@ $min-width: 320px;
     display: flex;
     justify-content: center;
     position: absolute;
-    width: 100%;
     top: 50%;
     transform: translateY(-40%);
 }
@@ -127,3 +126,6 @@ body {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import "./node_modules/bootstrap/scss/bootstrap";
