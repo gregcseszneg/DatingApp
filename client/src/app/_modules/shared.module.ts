@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 
 
-
 @NgModule({
   declarations: [],
   imports: [

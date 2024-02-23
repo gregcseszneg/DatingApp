@@ -7,6 +7,7 @@ import { MembersService } from 'src/app/_services/members.service';
 import { MatTabChangeEvent, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 
 
+
 @Component({
   selector: 'app-member-detail',
   standalone: true,

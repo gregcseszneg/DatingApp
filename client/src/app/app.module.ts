@@ -33,8 +33,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
     TestErrorComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    MemberCardComponent,
-    MemberEditComponent
+    MemberCardComponent
   ],
   imports: [
     BrowserModule,
