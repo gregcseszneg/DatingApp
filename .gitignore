@@ -8,3 +8,5 @@ API/obj/*
 .vs/DatingApp/DesignTimeBuild/.dtbcache.v2
 .vs/DatingApp/v17/.futdcache.v2
 .vs/DatingApp/v17/.suo
+API/datingapp.db-shm
+API/datingapp.db-wal
