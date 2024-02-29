@@ -10,3 +10,4 @@ API/obj/*
 .vs/DatingApp/v17/.suo
 API/datingapp.db-shm
 API/datingapp.db-wal
+API/appsettings.json
