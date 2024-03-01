@@ -51,7 +51,7 @@ namespace API.Controllers
             return BadRequest("Failed to update user!");
         }
 
-        [HttpPut("add-photo")]
+        [HttpPost("add-photo")]
         public async Task<ActionResult<PhotoDto>> AddPhoto (IFormFile file)
         {
             var user = await this.userRepository.GetUserByUsernameAsync(User.GetUsername());
@@ -83,7 +83,7 @@ namespace API.Controllers
 
             if(await this.userRepository.SaveAllAsync())
             {
-                return this.mapper.Map<PhotoDto>(photo);
+                return CreatedAtAction(nameof(GetUser), new {username = user.UserName}, this.mapper.Map<PhotoDto>(photo));
             }
 
             return BadRequest("Problem adding the photo");
