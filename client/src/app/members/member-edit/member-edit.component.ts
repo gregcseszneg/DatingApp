@@ -8,6 +8,7 @@ import { MembersService } from 'src/app/_services/members.service';
 import { MatTabChangeEvent, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { PhotoEditorComponent } from '../photo-editor/photo-editor.component';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
   standalone: true,
   templateUrl: './member-edit.component.html',
   styleUrls: ['./member-edit.component.scss'],
-  imports: [CommonModule, MatTabsModule, FormsModule]
+  imports: [CommonModule, MatTabsModule, FormsModule, PhotoEditorComponent]
 })
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm | undefined; //helps to reach a component from the DOM
