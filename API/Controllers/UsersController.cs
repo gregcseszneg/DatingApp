@@ -18,12 +18,13 @@ namespace API.Controllers
     {
         private readonly IUserRepository userRepository;
         private readonly IMapper mapper;
-        private readonly PhotoService photoService;
+        private readonly IPhotoService photoService;
 
         public UsersController(IUserRepository userRepository, IMapper mapper, IPhotoService photoService)
         {
             this.mapper = mapper;
             this.userRepository = userRepository;
+            this.photoService = photoService;
 
         }
         [HttpGet]
