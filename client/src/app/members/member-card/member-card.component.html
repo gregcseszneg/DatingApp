@@ -1,8 +1,8 @@
 
     <div class="card" *ngIf="member">
-        <div class="card-image">
+        <div class="card-image d-flex justify-content-center">
             <img src="{{member.photoUrl}}" alt="{{member.knownAs}}">
-            <div class="icons">
+            <div class="icons mx-auto">
                 <ul>
                     <li>
                         <button routerLink="/members/{{member.userName}}"><i class="fa fa-user"></i></button>
