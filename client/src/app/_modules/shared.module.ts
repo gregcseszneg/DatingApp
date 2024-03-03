@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -15,10 +16,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ),
     NgxSpinnerModule.forRoot({
       type: 'ball-pulse'
-    })
+    }),
+    BsDatepickerModule.forRoot()
   ], exports: [
     ToastrModule, 
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    BsDatepickerModule
   ]
 })
 export class SharedModule { }
