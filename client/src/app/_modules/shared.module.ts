@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 
 @NgModule({
@@ -17,11 +18,13 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     NgxSpinnerModule.forRoot({
       type: 'ball-pulse'
     }),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot()
   ], exports: [
     ToastrModule, 
     NgxSpinnerModule,
-    BsDatepickerModule
+    BsDatepickerModule,
+    PaginationModule
   ]
 })
 export class SharedModule { }
