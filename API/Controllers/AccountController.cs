@@ -29,18 +29,18 @@ namespace API.Controllers
         [HttpPost("register")] // POST: api/account/register
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if(await UserExists(registerDto.UserName))
+            if (await UserExists(registerDto.UserName))
             {
                 return BadRequest("UserName is taken");
             }
 
             var user = mapper.Map<AppUser>(registerDto);
 
-            using var hmac= new HMACSHA512(); //using keyword makes sure that this variable is disposed after we used it
+            using var hmac = new HMACSHA512(); //using keyword makes sure that this variable is disposed after we used it
             user.UserName = registerDto.UserName.ToLower();
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
             user.PasswordSalt = hmac.Key;
- 
+
 
             this.context.Users.Add(user);
             await this.context.SaveChangesAsync();
@@ -49,7 +49,8 @@ namespace API.Controllers
             {
                 UserName = user.UserName,
                 Token = tokenService.CreateToken(user),
-                KnownAs = user.KnownAs
+                KnownAs = user.KnownAs,
+                Gender = user.Gender
             };
         }
 
@@ -60,7 +61,7 @@ namespace API.Controllers
             .Include(p => p.Photos)
             .SingleOrDefaultAsync(x => x.UserName == loginDto.UserName);
 
-            if(user == null)
+            if (user == null)
             {
                 return Unauthorized("invalid UserName");
             }
@@ -69,9 +70,9 @@ namespace API.Controllers
 
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
 
-            for( int i=0; i < computedHash.Length; i++ )
+            for (int i = 0; i < computedHash.Length; i++)
             {
-                if(computedHash[i] != user.PasswordHash[i])
+                if (computedHash[i] != user.PasswordHash[i])
                 {
                     return Unauthorized("invalid password");
                 }
@@ -82,7 +83,8 @@ namespace API.Controllers
                 UserName = user.UserName,
                 Token = tokenService.CreateToken(user),
                 PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
-                KnownAs = user.KnownAs
+                KnownAs = user.KnownAs,
+                Gender = user.Gender
             };
         }
         private async Task<bool> UserExists(string UserName)
