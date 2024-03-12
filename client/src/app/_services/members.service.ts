@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Member } from '../_models/member';
 import { map, of } from 'rxjs';
 import { PaginatedResult } from '../_models/pagination';
-import { UserParams } from '../_models/useParams';
+import { UserParams } from '../_models/userParams';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,7 @@ export class MembersService {
     params = params.append('minAge', userParams.minAge);
     params = params.append('maxAge', userParams.maxAge);
     params = params.append('gender', userParams.gender);
+    params = params.append('orderBy', userParams.orderBy);
     
     return this.getPaginatedResult<Member[]>(this.baseUrl + 'users',params)
   }

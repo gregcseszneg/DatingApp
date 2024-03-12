@@ -2,7 +2,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { Observable, take } from 'rxjs';
 import { Member } from 'src/app/_models/member';
 import { Pagiantion } from 'src/app/_models/pagination';
-import { UserParams } from 'src/app/_models/useParams';
+import { UserParams } from 'src/app/_models/userParams';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
@@ -37,7 +37,7 @@ export class MemberListComponent implements OnInit {
     this.loadMembers();
    }
 
-   resetFilter() {
+   resetFilters() {
     if(this.user) {
       this.userParams = new UserParams(this.user);
       this.loadMembers();
