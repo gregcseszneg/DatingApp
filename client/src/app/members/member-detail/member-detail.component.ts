@@ -5,6 +5,7 @@ import { GalleryItem, GalleryModule, ImageItem} from 'ng-gallery';
 import { Member } from 'src/app/_models/member';
 import { MembersService } from 'src/app/_services/members.service';
 import { MatTabChangeEvent, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
+import { TimePastPipe } from 'ng-time-past-pipe';
 
 
 
@@ -13,7 +14,7 @@ import { MatTabChangeEvent, MatTabGroup, MatTabsModule } from '@angular/material
   standalone: true,
   templateUrl: './member-detail.component.html',
   styleUrls: ['./member-detail.component.scss'],
-  imports: [CommonModule, GalleryModule, MatTabsModule]
+  imports: [CommonModule, GalleryModule, MatTabsModule, TimePastPipe]
 })
 export class MemberDetailComponent implements OnInit{
   member: Member | undefined;

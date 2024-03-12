@@ -20,8 +20,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
       type: 'ball-pulse'
     }),
     BsDatepickerModule.forRoot(),
-    PaginationModule.forRoot(),
-    ButtonsModule.forRoot(),
+    ButtonsModule.forRoot()
   ], exports: [
     ToastrModule, 
     NgxSpinnerModule,

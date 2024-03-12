@@ -9,6 +9,7 @@ import { MatTabChangeEvent, MatTabGroup, MatTabsModule } from '@angular/material
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { PhotoEditorComponent } from '../photo-editor/photo-editor.component';
+import { TimePastPipe } from 'ng-time-past-pipe';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { PhotoEditorComponent } from '../photo-editor/photo-editor.component';
   standalone: true,
   templateUrl: './member-edit.component.html',
   styleUrls: ['./member-edit.component.scss'],
-  imports: [CommonModule, MatTabsModule, FormsModule, PhotoEditorComponent]
+  imports: [CommonModule, MatTabsModule, FormsModule, PhotoEditorComponent, TimePastPipe]
 })
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm: NgForm | undefined; //helps to reach a component from the DOM
