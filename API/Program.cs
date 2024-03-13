@@ -15,11 +15,12 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.UseMiddleware<ExceptionMiddleware>();
 
-app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod()
-    .WithOrigins("https://localhost:4200"));
+app.UseCors(builder =>
+    builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200")
+);
 
-app.UseAuthentication();  //do you have a valid token?
-app.UseAuthorization();   //You have a valid token, what you are allowed to do?
+app.UseAuthentication(); //do you have a valid token?
+app.UseAuthorization(); //You have a valid token, what you are allowed to do?
 
 app.MapControllers();
 
@@ -31,10 +32,10 @@ try
     await context.Database.MigrateAsync();
     await Seed.SeedUsers(context);
 }
-catch(Exception ex)
+catch (Exception ex)
 {
     var logger = services.GetService<ILogger<Program>>();
-    logger.LogError(ex,"An error occured while migrating");
+    logger.LogError(ex, "An error occured while migrating");
 }
 
 app.Run();

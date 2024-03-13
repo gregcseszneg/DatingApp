@@ -19,6 +19,7 @@ namespace API.Controllers
         private readonly DataContext context;
         private readonly ITokenService tokenService;
         private readonly IMapper mapper;
+
         public AccountController(DataContext context, ITokenService tokenService, IMapper mapper)
         {
             this.tokenService = tokenService;
@@ -41,7 +42,6 @@ namespace API.Controllers
             user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
             user.PasswordSalt = hmac.Key;
 
-
             this.context.Users.Add(user);
             await this.context.SaveChangesAsync();
 
@@ -57,9 +57,9 @@ namespace API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user = await this.context.Users
-            .Include(p => p.Photos)
-            .SingleOrDefaultAsync(x => x.UserName == loginDto.UserName);
+            var user = await this
+                .context.Users.Include(p => p.Photos)
+                .SingleOrDefaultAsync(x => x.UserName == loginDto.UserName);
 
             if (user == null)
             {
@@ -87,6 +87,7 @@ namespace API.Controllers
                 Gender = user.Gender
             };
         }
+
         private async Task<bool> UserExists(string UserName)
         {
             return await this.context.Users.AnyAsync(x => x.UserName == UserName.ToLower());

@@ -12,6 +12,7 @@ namespace API.Controllers
     public class BuggyController : BaseApiController
     {
         private readonly DataContext context;
+
         public BuggyController(DataContext context)
         {
             this.context = context;
@@ -29,7 +30,7 @@ namespace API.Controllers
         {
             var thing = this.context.Users.Find(-1);
 
-            if(thing == null)
+            if (thing == null)
             {
                 return NotFound();
             }
@@ -44,7 +45,6 @@ namespace API.Controllers
             var thingToReturn = thing.ToString();
 
             return thingToReturn;
-
         }
 
         [HttpGet("bad-request")]

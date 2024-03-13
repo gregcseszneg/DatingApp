@@ -14,25 +14,23 @@ namespace API.Data.Migrations
                 name: "PasswordHash",
                 table: "Users",
                 type: "BLOB",
-                nullable: true);
+                nullable: true
+            );
 
             migrationBuilder.AddColumn<byte[]>(
                 name: "PasswordSalt",
                 table: "Users",
                 type: "BLOB",
-                nullable: true);
+                nullable: true
+            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "PasswordHash",
-                table: "Users");
+            migrationBuilder.DropColumn(name: "PasswordHash", table: "Users");
 
-            migrationBuilder.DropColumn(
-                name: "PasswordSalt",
-                table: "Users");
+            migrationBuilder.DropColumn(name: "PasswordSalt", table: "Users");
         }
     }
 }

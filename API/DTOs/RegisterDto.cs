@@ -1,6 +1,4 @@
-
 using System.ComponentModel.DataAnnotations;
-
 
 namespace API.DTOs
 {
@@ -19,7 +17,7 @@ namespace API.DTOs
 
         [Required]
         public DateOnly? DateOfBirth { get; set; } //optional to make required work!
-        
+
         [Required]
         [StringLength(64)]
         public string City { get; set; }
