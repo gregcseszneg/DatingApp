@@ -1,27 +1,27 @@
-
-    <div class="card" *ngIf="member">
-        <div class="card-image d-flex justify-content-center">
-            <img src="{{member.photoUrl}}" alt="{{member.knownAs}}">
-            <div class="icons mx-auto">
-                <ul>
-                    <li>
-                        <button routerLink="/members/{{member.userName}}"><i class="fa fa-user"></i></button>
-                    </li>
-                    <li>
-                        <button><i class="fa fa-heart"></i></button>
-                    </li>
-                    <li>
-                        <button><i class="fa fa-envelope"></i></button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="class-body">
-            <h4 class="card-title">
-                {{member.knownAs}}
-            </h4>
-            <p class="card.age">{{member.age}}</p>
-            <p class="card-city">{{member.city}}</p>
-        </div>
+<div class="card" *ngIf="member">
+  <div class="card-image d-flex justify-content-center">
+    <img src="{{ member.photoUrl }}" alt="{{ member.knownAs }}" />
+    <div class="icons mx-auto">
+      <ul>
+        <li>
+          <button routerLink="/members/{{ member.userName }}">
+            <i class="fa fa-user"></i>
+          </button>
+        </li>
+        <li>
+          <button><i class="fa fa-heart"></i></button>
+        </li>
+        <li>
+          <button><i class="fa fa-envelope"></i></button>
+        </li>
+      </ul>
     </div>
-
+  </div>
+  <div class="class-body">
+    <h4 class="card-title">
+      {{ member.knownAs }}
+    </h4>
+    <p class="card.age">{{ member.age }}</p>
+    <p class="card-city">{{ member.city }}</p>
+  </div>
+</div>

@@ -6,27 +6,25 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-        ToastrModule.forRoot(
-      {
-        positionClass: 'toast-bottom-right'
-      }
-    ),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+    }),
     NgxSpinnerModule.forRoot({
-      type: 'ball-pulse'
+      type: 'ball-pulse',
     }),
     BsDatepickerModule.forRoot(),
-    ButtonsModule.forRoot()
-  ], exports: [
-    ToastrModule, 
+    ButtonsModule.forRoot(),
+  ],
+  exports: [
+    ToastrModule,
     NgxSpinnerModule,
     BsDatepickerModule,
     PaginationModule,
-    ButtonsModule
-  ]
+    ButtonsModule,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -1,64 +1,62 @@
-@import '../../styles';
+@import "../../styles";
 
 * {
-    font-family: $font-family;
-    font-weight: $font-weight;
-    color: $text-color;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  color: $text-color;
 }
 
 .container {
-    @include home-wrapper;
-    margin:auto;
+  @include home-wrapper;
+  margin: auto;
 }
 
-.items__container{
-    @include container-centered;
-    flex-wrap: wrap;
-    justify-content:space-between;
-    div
-    {
-        white-space: normal;
-    }
-    .button__container {
-        margin: 2rem;
-        display: flex;
-        
-        justify-content: center;
+.items__container {
+  @include container-centered;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  div {
+    white-space: normal;
+  }
+  .button__container {
+    margin: 2rem;
+    display: flex;
 
-        button {
-            color: $nav-text-color;
-            padding: 0.3rem 1rem;
-            background-color: $button-color;
-            @include rounded-button;
-            margin: 0 1.5rem 0 1.5rem;
-            font-size: 1.5rem;
-            &:hover {
-                background-color: $button-color-darker;
-            }
-            @include breakpoint(xxsmall, max) {
-                padding: 0.3rem;
-                margin: 0 .9rem 0  .9rem;
-                font-size: 1.1rem;
-            }
-                
-        }
+    justify-content: center;
+
+    button {
+      color: $nav-text-color;
+      padding: 0.3rem 1rem;
+      background-color: $button-color;
+      @include rounded-button;
+      margin: 0 1.5rem 0 1.5rem;
+      font-size: 1.5rem;
+      &:hover {
+        background-color: $button-color-darker;
+      }
+      @include breakpoint(xxsmall, max) {
+        padding: 0.3rem;
+        margin: 0 0.9rem 0 0.9rem;
+        font-size: 1.1rem;
+      }
     }
+  }
 }
 
 h1 {
-    font-weight: 800;
-    font-size: 4rem;
-    line-height: 4rem;
-    font-style: italic;
-    text-align: center;
-    margin-bottom: 2rem;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+  font-weight: 800;
+  font-size: 4rem;
+  line-height: 4rem;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 p {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }

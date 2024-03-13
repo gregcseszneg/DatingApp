@@ -1,210 +1,201 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-@import '../../styles';
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+@import "../../styles";
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: $secondary-color;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: $secondary-color;
 }
 
-
-
-li, a, button {
-    font-family: $font-family;
-    font-weight: 500;
-    font-size: 16px;
-    color: $nav-text-color;
-    text-decoration: none;
+li,
+a,
+button {
+  font-family: $font-family;
+  font-weight: 500;
+  font-size: 16px;
+  color: $nav-text-color;
+  text-decoration: none;
 }
 
 .active {
-    background-color: $secondary-color-darker;
+  background-color: $secondary-color-darker;
 }
 
 nav {
-    display: flex;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .nav__bar {
+  display: flex;
+  align-items: center;
+  padding: 0.5% 1%;
+  min-height: 50px;
+  width: 100vw;
+
+  div {
     display: flex;
+    align-items: stretch;
+  }
+
+  .burger {
+    visibility: hidden;
+  }
+  .nav__box-left {
+    margin-left: 0;
+    margin-right: auto;
     align-items: center;
-    padding: .5% 1%;
-    min-height: 50px;
-    width: 100vw;
+  }
+  .nav__box-center {
+    width: max-content;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .nav__box-right {
+    justify-content: flex-end;
+  }
 
-    div {
-        display: flex;
-        align-items: stretch;
-    }
-
-    .burger {
-            visibility: hidden;
-    }
-    .nav__box-left{
-        margin-left: 0; 
-        margin-right: auto;
-        align-items: center;
-        
-    }
-    .nav__box-center{
-        width:max-content;
-        justify-content: center;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-
-        
-    }
-    .nav__box-right{
-        justify-content: flex-end;
-    }
-
-
-
-
-.nav__logo {
+  .nav__logo {
     cursor: pointer;
     height: 52px;
-    width: auto; 
+    width: auto;
     @include breakpoint(xxsmall, max) {
-        height: 32px;    
+      height: 32px;
     }
-}
+  }
 
-.navbar__brand {
+  .navbar__brand {
     margin: 0 0.6rem 0 0.6rem;
     font-weight: 700;
     font-size: 24px;
     @include breakpoint(xsmall, max) {
-        font-size: 18px;
+      font-size: 18px;
     }
-}
-.nav__links {
-
-    .link__container  {
-        flex-wrap: wrap;
-        justify-content: center;
+  }
+  .nav__links {
+    .link__container {
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     text-align: center;
 
     li {
-        display: inline-block;
-        padding: 0.4rem 0.4rem;
-        a{
-            padding: .2rem 1rem;
-            border: none;
-            border-radius: 2rem;
-            &:hover {
-                background-color: $secondary-color-darker;
-            }
-        } 
+      display: inline-block;
+      padding: 0.4rem 0.4rem;
+      a {
+        padding: 0.2rem 1rem;
+        border: none;
+        border-radius: 2rem;
+        &:hover {
+          background-color: $secondary-color-darker;
+        }
+      }
     }
-}
+  }
 
-
-button {
+  button {
     margin: 0 0 0 0.5;
     background-color: $button-color;
     height: 2rem;
     width: 5rem;
     @include rounded-button;
     &:hover {
-        background-color: $button-color-darker;
+      background-color: $button-color-darker;
     }
     @include breakpoint(xsmall, max) {
-        font-size: 14px;
-        width: 4rem;
-        height: 1.7rem;
+      font-size: 14px;
+      width: 4rem;
+      height: 1.7rem;
     }
     @include breakpoint(xxsmall, max) {
-        height: 1.5rem;
-        width: 3.5rem;    
+      height: 1.5rem;
+      width: 3.5rem;
     }
-}
+  }
 
-.login-form {
+  .login-form {
     input {
-        margin: 0 .25rem;
-        padding: .5rem;
-        background-color: $background-color;
-        height: 2rem;
-        width: 10rem;
-        border: 0;
-        border-radius: 1rem;
-        color:$text-color;
+      margin: 0 0.25rem;
+      padding: 0.5rem;
+      background-color: $background-color;
+      height: 2rem;
+      width: 10rem;
+      border: 0;
+      border-radius: 1rem;
+      color: $text-color;
 
-        &:focus {
-            outline: none;
-        }
-        @include breakpoint(xsmall, max) {
-            height: 1.7rem;
-            width: 8rem;
-        }
-        @include breakpoint(xxsmall, max) {
-            height: 1.5rem;
-            width: 6rem;    
-        }
+      &:focus {
+        outline: none;
+      }
+      @include breakpoint(xsmall, max) {
+        height: 1.7rem;
+        width: 8rem;
+      }
+      @include breakpoint(xxsmall, max) {
+        height: 1.5rem;
+        width: 6rem;
+      }
     }
- }
+  }
 }
 @include breakpoint(medium, max) {
-    .navbar__brand {
-        display: none;
-    }
+  .navbar__brand {
+    display: none;
+  }
 }
 @include breakpoint(small, max) {
-    nav {
-        display: none;
-    }
+  nav {
+    display: none;
+  }
 
-    .logout-button {
-        display: none;        
-    }
+  .logout-button {
+    display: none;
+  }
 
-    .mobile__menu {
-        flex-direction: column;
-        cursor: pointer;
-        padding: .3rem;
-        border-radius: .7rem;
-        @include transition-ease;
-        &:hover {
-            background-color: $secondary-color-darker;
-        }
+  .mobile__menu {
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 0.7rem;
+    @include transition-ease;
+    &:hover {
+      background-color: $secondary-color-darker;
     }
+  }
 
-    .bar1, .bar2, .bar3 {
-        width: 35px;
-        height: 5px;
-        background-color: $button-color;
-        margin: 3.5px 0;
-        @include transition-ease;
+  .bar1,
+  .bar2,
+  .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: $button-color;
+    margin: 3.5px 0;
+    @include transition-ease;
 
-        &:hover {
-            background-color: $button-color-darker;
-        }
+    &:hover {
+      background-color: $button-color-darker;
     }
+  }
 
-    .change .bar1 {
-        transform: translate(0, 11px)
-        rotate(-45deg);
-    }
-    .change .bar2 {
-        opacity: 0;
-    }
+  .change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+  }
+  .change .bar2 {
+    opacity: 0;
+  }
 
-    .change .bar3 {
-        transform: translate(0, -11px)
-        rotate(45deg);
-    }
+  .change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+  }
 }
 
 .profilePic {
-    height: 50px;
-    border: 2px solid white;
-    display: inline;
+  height: 50px;
+  border: 2px solid white;
+  display: inline;
 }
-

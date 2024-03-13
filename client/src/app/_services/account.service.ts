@@ -5,46 +5,42 @@ import { User } from '../_models/user';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AccountService {
   baseUrl: string = environment.apiUrl;
   private currentUserSource = new BehaviorSubject<User | null>(null); //it can be user or null
   currentUser$ = this.currentUserSource.asObservable(); //create the observable
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  login(model: any){
-    return this.http.post<User>(this.baseUrl +'account/login', model).pipe(
-        map((response: User) => {
-          const user = response;
-          if(user)
-          {
-            this.setCurrentUser(user);
-          }
-        })
-      );
-  }
-
-  register(model:any) {
-    return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
-      map(user => {
-        if(user)
-        {
+  login(model: any) {
+    return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
+      map((response: User) => {
+        const user = response;
+        if (user) {
           this.setCurrentUser(user);
         }
-      })
-    )
+      }),
+    );
   }
 
-  logout()
-  {
+  register(model: any) {
+    return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
+      map((user) => {
+        if (user) {
+          this.setCurrentUser(user);
+        }
+      }),
+    );
+  }
+
+  logout() {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
   }
 
-  setCurrentUser(user: User)
-  {
+  setCurrentUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }

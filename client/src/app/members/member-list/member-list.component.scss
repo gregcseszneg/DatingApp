@@ -1,11 +1,11 @@
 .container {
-    justify-content: center;
-    align-items: center;
-    padding:  2rem 4rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 4rem;
 }
 
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 192px);
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 192px);
+  justify-content: center;
 }

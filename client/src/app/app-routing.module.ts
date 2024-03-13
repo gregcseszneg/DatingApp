@@ -13,26 +13,31 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { preventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: '',
+  { path: '', component: HomeComponent },
+  {
+    path: '',
     runGuardsAndResolvers: 'always',
     canActivate: [authGuard],
     children: [
-      {path: 'members', component: MemberListComponent},
-      {path: 'members/:username', component: MemberDetailComponent},
-      {path: 'member/edit', component: MemberEditComponent, canDeactivate: [preventUnsavedChangesGuard]},
-      {path: 'lists', component: ListsComponent},
-      {path: 'messages', component: MessagesComponent}
-    ]
+      { path: 'members', component: MemberListComponent },
+      { path: 'members/:username', component: MemberDetailComponent },
+      {
+        path: 'member/edit',
+        component: MemberEditComponent,
+        canDeactivate: [preventUnsavedChangesGuard],
+      },
+      { path: 'lists', component: ListsComponent },
+      { path: 'messages', component: MessagesComponent },
+    ],
   },
-  {path: 'errors', component: TestErrorComponent},
-  {path: 'server-error', component: ServerErrorComponent},
-  {path: 'not-found', component: NotFoundComponent},
-  {path: '**', component: NotFoundComponent, pathMatch: 'full'},
-]; 
+  { path: 'errors', component: TestErrorComponent },
+  { path: 'server-error', component: ServerErrorComponent },
+  { path: 'not-found', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

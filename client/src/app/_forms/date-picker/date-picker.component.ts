@@ -5,30 +5,29 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.scss']
+  styleUrls: ['./date-picker.component.scss'],
 })
 export class DatePickerComponent implements ControlValueAccessor {
-  @Input() label ='';
+  @Input() label = '';
   @Input() maxDate: Date | undefined;
   bsConfig: Partial<BsDatepickerConfig> | undefined; //Partial makes every field optional inside BsDatepickerConfig
 
   constructor(@Self() public ngControl: NgControl) {
     this.ngControl.valueAccessor = this;
-    this.bsConfig = Object.assign({}, {
-      containerClass: 'theme-red',
-      dateInputFormat: 'DD MMMM YYYY',
-      isAnimated: true,
-    });
+    this.bsConfig = Object.assign(
+      {},
+      {
+        containerClass: 'theme-red',
+        dateInputFormat: 'DD MMMM YYYY',
+        isAnimated: true,
+      },
+    );
   }
-  writeValue(obj: any): void {
-  }
-  registerOnChange(fn: any): void {
-  }
-  registerOnTouched(fn: any): void {
-  }
-  setDisabledState?(isDisabled: boolean): void {
-  }
-  
+  writeValue(obj: any): void {}
+  registerOnChange(fn: any): void {}
+  registerOnTouched(fn: any): void {}
+  setDisabledState?(isDisabled: boolean): void {}
+
   get control(): FormControl {
     return this.ngControl.control as FormControl;
   }

@@ -8,40 +8,35 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
   model: any = {};
-  
 
+  constructor(
+    public accountService: AccountService,
+    private router: Router,
+    private toastr: ToastrService,
+  ) {}
 
-  constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login() {
-      this.accountService.login(this.model).subscribe({
-        next: response => this.router.navigateByUrl('/members')
-      });
+    this.accountService.login(this.model).subscribe({
+      next: (response) => this.router.navigateByUrl('/members'),
+    });
   }
 
   logout() {
-      this.accountService.logout();
-      this.router.navigateByUrl('/');
+    this.accountService.logout();
+    this.router.navigateByUrl('/');
   }
 
-  
   openMobileMenu = (event: any) => {
-    
-    if(event.classList==" mobile__menu change") {
-      event.target.classList.remove("change");
+    if (event.classList == ' mobile__menu change') {
+      event.target.classList.remove('change');
+    } else {
+      event.target.classList.add('change');
     }
-    else {
-      event.target.classList.add("change");
-    }
-    
-  }
+  };
 }
-
-

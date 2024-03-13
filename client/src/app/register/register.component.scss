@@ -1,60 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
-@import '../../styles';
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+@import "../../styles";
 
 * {
-    color: $text-color;
-    font-family: $font-family;
+  color: $text-color;
+  font-family: $font-family;
 }
 
-
 .wrapper {
-    @include home-wrapper;
-    position: relative;
-    height: max-content;
-    margin:auto;
-    @include container-centered ;
-    border: 0;
-    border-radius: 1rem;
-    box-shadow: 1rem 3rem 3rem 3rem #d6d3d3;
-    padding: 1rem;
-    
+  @include home-wrapper;
+  position: relative;
+  height: max-content;
+  margin: auto;
+  @include container-centered;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 1rem 3rem 3rem 3rem #d6d3d3;
+  padding: 1rem;
 }
 
 hr {
-    width: 75%; 
-    margin-top: 0;
-    margin-left: auto;
-    margin-right: auto;
+  width: 75%;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .headline {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.5rem;
 }
 
 .register__form {
-    @include container-centered;
-    text-align: center;
-    justify-content: center;
-    width: 500px;
-    min-width: $min-width;
-    max-width: 100%;
-    height: 30vh;
+  @include container-centered;
+  text-align: center;
+  justify-content: center;
+  width: 500px;
+  min-width: $min-width;
+  max-width: 100%;
+  height: 30vh;
 
-    button {
-        color: $nav-text-color;
-        background-color: $button-color;
-        margin: 0.5rem 1rem 1rem 1rem;
-        padding: 0.25rem 1rem;
-        @include rounded-button;
-        &:hover {
-            background-color: $button-color-darker;
-        }
+  button {
+    color: $nav-text-color;
+    background-color: $button-color;
+    margin: 0.5rem 1rem 1rem 1rem;
+    padding: 0.25rem 1rem;
+    @include rounded-button;
+    &:hover {
+      background-color: $button-color-darker;
     }
+  }
 
-    /*input {
+  /*input {
         width: 75%;
         border: 0;
         border-radius: 1rem;
