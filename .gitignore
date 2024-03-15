@@ -13,3 +13,5 @@ API/datingapp.db-wal
 API/appsettings.json
 API/appsettings.Development.json
 API/datingapp.db
+API.Tests/bin/*
+API.Tests/obj/*
