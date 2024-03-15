@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@angular/cli": "^17.0.8",
-    "ng-gallery": "^11.0.0"
-  }
-}
