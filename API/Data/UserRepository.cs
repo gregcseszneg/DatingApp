@@ -83,5 +83,10 @@ namespace API.Data
         {
             context.Entry(user).State = EntityState.Modified;
         }
+
+        public async Task<bool> UserExistsAsync(string userName)
+        {
+            return await this.context.Users.AnyAsync(x => x.UserName == userName.ToLower());
+        }
     }
 }

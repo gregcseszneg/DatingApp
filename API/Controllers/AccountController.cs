@@ -19,18 +19,25 @@ namespace API.Controllers
         private readonly DataContext context;
         private readonly ITokenService tokenService;
         private readonly IMapper mapper;
+        private readonly IUserRepository userRepository;
 
-        public AccountController(DataContext context, ITokenService tokenService, IMapper mapper)
+        public AccountController(
+            DataContext context,
+            ITokenService tokenService,
+            IMapper mapper,
+            IUserRepository userRepository
+        )
         {
             this.tokenService = tokenService;
             this.context = context;
             this.mapper = mapper;
+            this.userRepository = userRepository;
         }
 
         [HttpPost("register")] // POST: api/account/register
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if (await UserExists(registerDto.UserName))
+            if (await userRepository.UserExistsAsync(registerDto.UserName))
             {
                 return BadRequest("UserName is taken");
             }
@@ -45,10 +52,12 @@ namespace API.Controllers
             this.context.Users.Add(user);
             await this.context.SaveChangesAsync();
 
+            string token = tokenService.CreateToken(user);
+
             return new UserDto
             {
                 UserName = user.UserName,
-                Token = tokenService.CreateToken(user),
+                Token = token,
                 KnownAs = user.KnownAs,
                 Gender = user.Gender
             };
@@ -86,11 +95,6 @@ namespace API.Controllers
                 KnownAs = user.KnownAs,
                 Gender = user.Gender
             };
-        }
-
-        private async Task<bool> UserExists(string UserName)
-        {
-            return await this.context.Users.AnyAsync(x => x.UserName == UserName.ToLower());
         }
     }
 }
