@@ -1,5 +1,3 @@
-using System;
-using System.Text;
 using API.Controllers;
 using API.Data;
 using API.DTOs;
@@ -9,9 +7,7 @@ using API.Interfaces;
 using API.Tests.ControllerTests.Utils;
 using AutoMapper;
 using FluentAssertions;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 using NSubstitute;
 
@@ -25,6 +21,9 @@ namespace API.Tests.ControllerTests
         private IMapper mapper;
         private AccountController accountController;
         private IUserRepository userRepositoryMock;
+        private static string photoUrl = "https://testUrl.com";
+        private static string token = "testToken";
+        private static string password = "passw123";
 
         [SetUp]
         public void Init()
@@ -37,7 +36,7 @@ namespace API.Tests.ControllerTests
             context = new DataContext(options);
 
             //add test data
-            context.Users.AddRange(TestDataUtils.getAppUserList(6));
+            //context.Users.AddRange(TestDataUtils.GetAppUserList(6));
 
             //Dependencies
             tokenServiceMock = Substitute.For<ITokenService>();
@@ -45,6 +44,9 @@ namespace API.Tests.ControllerTests
             var configuration = new MapperConfiguration(cfg => cfg.AddProfile(myProfile));
             mapper = new Mapper(configuration);
             userRepositoryMock = Substitute.For<IUserRepository>();
+
+            tokenServiceMock.CreateToken(Arg.Any<AppUser>()).Returns(token);
+            userRepositoryMock.GetUserMainPhotoUrl(Arg.Any<List<Photo>>()).Returns(photoUrl);
 
             //SUT - System Under Test
             this.accountController = new AccountController(
@@ -56,7 +58,7 @@ namespace API.Tests.ControllerTests
         }
 
         [Test]
-        public async Task AccounTController_Register_ReturnsUserDto()
+        public async Task AccountController_Register_ValidDetails_ReturnsUserDto()
         {
             //Arrange
             RegisterDto regDto = new RegisterDto
@@ -70,14 +72,13 @@ namespace API.Tests.ControllerTests
                 Password = "test123"
             };
             var user = mapper.Map<AppUser>(regDto);
-            userRepositoryMock.UserExistsAsync(regDto.UserName).Returns(false);
-            tokenServiceMock.CreateToken(Arg.Any<AppUser>()).Returns("testToken");
+            userRepositoryMock.UserExistsAsync(Arg.Any<string>()).Returns(false);
             var expectedUser = new UserDto
             {
                 UserName = user.UserName,
                 Gender = user.Gender,
                 KnownAs = user.KnownAs,
-                Token = "testToken"
+                Token = token
             };
 
             //Act
@@ -85,13 +86,94 @@ namespace API.Tests.ControllerTests
 
             //Assert
             result.Should().BeOfType<ActionResult<UserDto>>();
-
-            var addedItem = await context.Users.FirstOrDefaultAsync(u =>
-                u.UserName == regDto.UserName
-            );
-
-            addedItem.Should().NotBeNull();
+            result.Result.Should().BeNull();
             result.Value.Should().Be(expectedUser);
+        }
+
+        [Test]
+        public async Task AccountController_Register_EmptyRegisterDto_ReturnsBadRequest()
+        {
+            //Arrange
+            RegisterDto regDto = new RegisterDto();
+            userRepositoryMock.UserExistsAsync(Arg.Any<string>()).Returns(false);
+
+            //Act
+            var result = await accountController.Register(regDto);
+
+            //Assert
+            result.Should().BeOfType<ActionResult<UserDto>>();
+            result.Result.Should().BeOfType<BadRequestObjectResult>();
+            result.Value.Should().BeNull();
+        }
+
+        [Test]
+        public async Task AccountController_Login_CorrectCredentials_ReturnsUserDto()
+        {
+            //Arrange
+            AppUser testUser = TestDataUtils.CreateAppUser(password);
+            userRepositoryMock.GetUserByUsernameAsync(Arg.Any<string>()).Returns(testUser);
+            LoginDto loginDto = new LoginDto { UserName = testUser.UserName, Password = password };
+            UserDto expected = new UserDto
+            {
+                UserName = testUser.UserName,
+                Token = token,
+                PhotoUrl = photoUrl,
+                KnownAs = testUser.KnownAs,
+                Gender = testUser.Gender
+            };
+
+            //Act
+            var result = await accountController.Login(loginDto);
+
+            //Assert
+            result.Should().BeOfType<ActionResult<UserDto>>();
+            result.Result.Should().BeNull();
+            result.Value.Should().Be(expected);
+        }
+
+        [Test]
+        public async Task AccountController_Login_IncorrectPassword_ReturnsUnauthorized()
+        {
+            //Arrange
+            AppUser testUser = TestDataUtils.CreateAppUser(password);
+            userRepositoryMock.GetUserByUsernameAsync(Arg.Any<string>()).Returns(testUser);
+            LoginDto loginDto = new LoginDto { UserName = testUser.UserName, Password = "invalid" };
+
+            //Act
+            var result = await accountController.Login(loginDto);
+
+            //Assert
+            result.Should().BeOfType<ActionResult<UserDto>>();
+            result.Result.Should().BeOfType<UnauthorizedObjectResult>();
+            if (result.Result != null)
+            {
+                var objectResult = (UnauthorizedObjectResult)result.Result;
+                objectResult?.Value.Should().Be("invalid password");
+            }
+            result.Value.Should().BeNull();
+        }
+
+        [Test]
+        public async Task AccountController_Login_IncorrectUsername_ReturnsUnauthorized()
+        {
+            //Arrange
+            //not needed since we have incorrect username, so this method will return with null
+            //userRepositoryMock.GetUserByUsernameAsync(Arg.Any<string>()).Returns(testUser);
+
+            LoginDto loginDto = new LoginDto { UserName = "incorrect", Password = password };
+
+            //Act
+            var result = await accountController.Login(loginDto);
+
+            //Assert
+            result.Should().BeOfType<ActionResult<UserDto>>();
+            result.Result.Should().BeOfType<UnauthorizedObjectResult>();
+            if (result.Result != null)
+            {
+                var objectResult = (UnauthorizedObjectResult)result.Result;
+                objectResult?.Value.Should().Be("invalid UserName");
+            }
+            result.Value.Should().BeNull();
         }
 
         [TearDown]

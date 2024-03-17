@@ -15,7 +15,8 @@ namespace API.DTOs
             {
                 return false;
             }
-            return userDto.Token == this.Token
+            return userDto.UserName == this.UserName
+                && userDto.Token == this.Token
                 && userDto.PhotoUrl == this.PhotoUrl
                 && userDto.KnownAs == this.KnownAs
                 && userDto.Gender == this.Gender;
@@ -23,7 +24,7 @@ namespace API.DTOs
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Token, PhotoUrl, KnownAs, Gender);
+            return HashCode.Combine(UserName, Token, PhotoUrl, KnownAs, Gender);
         }
     }
 }

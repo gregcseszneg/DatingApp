@@ -37,38 +37,43 @@ namespace API.Controllers
         [HttpPost("register")] // POST: api/account/register
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
-            if (await userRepository.UserExistsAsync(registerDto.UserName))
+            try
             {
-                return BadRequest("UserName is taken");
+                if (await userRepository.UserExistsAsync(registerDto.UserName))
+                {
+                    return BadRequest("UserName is taken");
+                }
+
+                var user = mapper.Map<AppUser>(registerDto);
+
+                using var hmac = new HMACSHA512(); //using keyword makes sure that this variable is disposed after we used it
+                user.UserName = registerDto.UserName.ToLower();
+                user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
+                user.PasswordSalt = hmac.Key;
+
+                this.context.Users.Add(user);
+                await this.context.SaveChangesAsync();
+
+                string token = tokenService.CreateToken(user);
+
+                return new UserDto
+                {
+                    UserName = user.UserName,
+                    Token = token,
+                    KnownAs = user.KnownAs,
+                    Gender = user.Gender
+                };
             }
-
-            var user = mapper.Map<AppUser>(registerDto);
-
-            using var hmac = new HMACSHA512(); //using keyword makes sure that this variable is disposed after we used it
-            user.UserName = registerDto.UserName.ToLower();
-            user.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password));
-            user.PasswordSalt = hmac.Key;
-
-            this.context.Users.Add(user);
-            await this.context.SaveChangesAsync();
-
-            string token = tokenService.CreateToken(user);
-
-            return new UserDto
+            catch (NullReferenceException err)
             {
-                UserName = user.UserName,
-                Token = token,
-                KnownAs = user.KnownAs,
-                Gender = user.Gender
-            };
+                return BadRequest("The following paramter cannot be null: " + err);
+            }
         }
 
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
-            var user = await this
-                .context.Users.Include(p => p.Photos)
-                .SingleOrDefaultAsync(x => x.UserName == loginDto.UserName);
+            var user = await userRepository.GetUserByUsernameAsync(loginDto.UserName);
 
             if (user == null)
             {
@@ -87,11 +92,14 @@ namespace API.Controllers
                 }
             }
 
+            string photoUrl = userRepository.GetUserMainPhotoUrl(user.Photos);
+            string token = tokenService.CreateToken(user);
+
             return new UserDto
             {
                 UserName = user.UserName,
-                Token = tokenService.CreateToken(user),
-                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain)?.Url,
+                Token = token,
+                PhotoUrl = photoUrl,
                 KnownAs = user.KnownAs,
                 Gender = user.Gender
             };

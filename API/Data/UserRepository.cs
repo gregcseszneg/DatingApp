@@ -88,5 +88,10 @@ namespace API.Data
         {
             return await this.context.Users.AnyAsync(x => x.UserName == userName.ToLower());
         }
+
+        public string GetUserMainPhotoUrl(List<Photo> photos)
+        {
+            return photos.Find(x => x.IsMain)?.Url;
+        }
     }
 }
