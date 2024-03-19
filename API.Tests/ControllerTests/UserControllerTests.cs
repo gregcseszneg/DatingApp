@@ -1,6 +1,4 @@
-using System.Security.Claims;
 using API.Controllers;
-using API.Data;
 using API.Entitities;
 using API.Helpers;
 using API.Interfaces;
@@ -71,6 +69,113 @@ namespace API.Tests.ControllerTests
             if (result is NoContentResult)
             {
                 (result as NoContentResult)?.StatusCode.Should().Be(204);
+            }
+        }
+
+        [Test]
+        public async Task UserController_SetMainPhoto_ValidIdButMain_WithMainPhoto_ReturnsBadRequest()
+        {
+            //Arrange
+            AppUser user = TestDataUtils.CreateAppUser(password);
+            user.Photos.AddRange(
+                new List<Photo>
+                {
+                    new Photo
+                    {
+                        Id = 1,
+                        PublicId = "2",
+                        IsMain = true,
+                        Url = "https://uploader.com/randomPic2",
+                        AppUserId = user.Id,
+                        AppUser = user
+                    },
+                    new Photo
+                    {
+                        Id = 2,
+                        PublicId = "3",
+                        IsMain = false,
+                        Url = "https://uploader.com/randomPic3",
+                        AppUserId = user.Id,
+                        AppUser = user
+                    }
+                }
+            );
+            userRepositoryMock.GetUserByUsernameAsync(null).Returns(user); //used null since there is no authenticated User
+            userRepositoryMock.SaveAllAsync().Returns(true);
+
+            //Act
+            var result = await userController.SetMainPhoto(1);
+
+            //Assert
+            result.Should().BeOfType<BadRequestObjectResult>();
+            if (result is BadRequestObjectResult)
+            {
+                (result as BadRequestObjectResult)?.StatusCode.Should().Be(400);
+                (result as BadRequestObjectResult)
+                    ?.Value.Should()
+                    .Be("This is already your main photo");
+            }
+        }
+
+        [Test]
+        public async Task UserController_SetMainPhoto_InvalidId_WithMainPhoto_ReturnsNotFound()
+        {
+            //Arrange
+            AppUser user = TestDataUtils.CreateAppUser(password);
+            user.Photos.AddRange(
+                new List<Photo>
+                {
+                    new Photo
+                    {
+                        Id = 1,
+                        PublicId = "2",
+                        IsMain = true,
+                        Url = "https://uploader.com/randomPic2",
+                        AppUserId = user.Id,
+                        AppUser = user
+                    },
+                    new Photo
+                    {
+                        Id = 2,
+                        PublicId = "3",
+                        IsMain = false,
+                        Url = "https://uploader.com/randomPic3",
+                        AppUserId = user.Id,
+                        AppUser = user
+                    }
+                }
+            );
+            userRepositoryMock.GetUserByUsernameAsync(null).Returns(user); //used null since there is no authenticated User
+            userRepositoryMock.SaveAllAsync().Returns(true);
+
+            //Act
+            var result = await userController.SetMainPhoto(5);
+
+            //Assert
+            result.Should().BeOfType<NotFoundResult>();
+            if (result is NotFoundResult)
+            {
+                (result as NotFoundResult)?.StatusCode.Should().Be(404);
+            }
+        }
+
+        [Test]
+        public async Task UserController_SetMainPhoto_InvalidId_WithoutPhotos_ReturnsNotFound()
+        {
+            //Arrange
+            AppUser user = TestDataUtils.CreateAppUser(password);
+
+            userRepositoryMock.GetUserByUsernameAsync(null).Returns(user); //used null since there is no authenticated User
+            userRepositoryMock.SaveAllAsync().Returns(true);
+
+            //Act
+            var result = await userController.SetMainPhoto(1);
+
+            //Assert
+            result.Should().BeOfType<NotFoundResult>();
+            if (result is NotFoundResult)
+            {
+                (result as NotFoundResult)?.StatusCode.Should().Be(404);
             }
         }
     }
