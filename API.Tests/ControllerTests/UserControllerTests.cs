@@ -178,5 +178,22 @@ namespace API.Tests.ControllerTests
                 (result as NotFoundResult)?.StatusCode.Should().Be(404);
             }
         }
+
+        [Test]
+        public async Task UserController_SetMainPhoto_InvalidUsername_ReturnsNotFound()
+        {
+            //Arrange
+            //*No mockking needed since teh default is that the GetUserByUsernameAsync return with null in this case
+
+            //Act
+            var result = await userController.SetMainPhoto(1);
+
+            //Assert
+            result.Should().BeOfType<NotFoundResult>();
+            if (result is NotFoundResult)
+            {
+                (result as NotFoundResult)?.StatusCode.Should().Be(404);
+            }
+        }
     }
 }
