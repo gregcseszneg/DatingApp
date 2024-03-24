@@ -22,9 +22,6 @@ $min-width: 320px;
 @mixin home-wrapper {
   display: flex;
   justify-content: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-40%);
 }
 
 @mixin container-centered {
